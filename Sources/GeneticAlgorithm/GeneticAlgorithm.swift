@@ -21,7 +21,7 @@ public class GeneticAlgorithm<T> {
         return population[0]
     }
     
-    init(populationSize: Int, initializeFunction: @escaping () -> [T], fitnessFunction: @escaping ([T]) -> Double) {
+    public init(populationSize: Int, initializeFunction: @escaping () -> [T], fitnessFunction: @escaping ([T]) -> Double) {
         self.generationCount = 0
         let newChromosome: [T] = initializeFunction()
         let crossoverPoint = Int(newChromosome.count / 2)
@@ -32,7 +32,7 @@ public class GeneticAlgorithm<T> {
         self.initializeIndividuals()
     }
     
-    init(populationSize: Int, initializeFunction: @escaping () -> [T], fitnessFunction: @escaping ([T]) -> Double, parameters: Parameters) {
+    public init(populationSize: Int, initializeFunction: @escaping () -> [T], fitnessFunction: @escaping ([T]) -> Double, parameters: Parameters) {
         self.generationCount = 0
         self.parameters = parameters
         self.populationSize = populationSize
@@ -51,7 +51,7 @@ public class GeneticAlgorithm<T> {
         population = fitness(population)
     }
     
-    func generate(generationCount: Int, fitnessTarget: Double?=nil) {
+    public func generate(generationCount: Int, fitnessTarget: Double?=nil) {
         for _ in 1...generationCount {
             createNewGeneration()
             if let target = fitnessTarget {
@@ -84,7 +84,7 @@ public class GeneticAlgorithm<T> {
         return individuals
     }
     
-    func scaleFitness() {
+    private func scaleFitness() {
         switch parameters.fitnessScale {
         case .rough:
             return
@@ -163,7 +163,7 @@ public class GeneticAlgorithm<T> {
         population.sort(by: { $0.fitness > $1.fitness })
     }
     
-    enum FitnessScale {
+    public enum FitnessScale {
         case rough
             /// Rough fitness
         case windowing
@@ -174,7 +174,7 @@ public class GeneticAlgorithm<T> {
             /// Fitness are linearized: same distance between all fitness
     }
     
-    class Individual<T> {
+    public class Individual<T> {
         var chromosome: [T] = []
         var fitness: Double = -Double.infinity
         var geneCount: Int {
@@ -186,14 +186,14 @@ public class GeneticAlgorithm<T> {
         }
     }
     
-    class Parameters {
+    public class Parameters {
         var fitnessScale: FitnessScale
         var parentProportion: Double
         var crossoverPointIndex: Int
         var chromosomeMutationProbability: Double
         var geneMutationProbability: Double
         
-        init(crossoverPoint: Int) {
+        public init(crossoverPoint: Int) {
             fitnessScale = FitnessScale.rough
             parentProportion = 0.2
             self.crossoverPointIndex = crossoverPoint - 1
@@ -201,7 +201,7 @@ public class GeneticAlgorithm<T> {
             geneMutationProbability = 0.3
         }
         
-        init(fitnessScale: FitnessScale, parentProportion: Double, crossoverPoint: Int, chromosomeMutationProbability: Double, geneMutationProbability: Double) {
+        public init(fitnessScale: FitnessScale, parentProportion: Double, crossoverPoint: Int, chromosomeMutationProbability: Double, geneMutationProbability: Double) {
             self.fitnessScale = fitnessScale
             self.parentProportion = parentProportion
             self.crossoverPointIndex = crossoverPoint - 1

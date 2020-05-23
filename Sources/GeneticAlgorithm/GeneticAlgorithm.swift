@@ -173,8 +173,8 @@ public class GeneticAlgorithm<T> {
     }
     
     public class Individual<T> {
-        var chromosome: [T] = []
-        var fitness: Double = -Double.infinity
+        public var chromosome: [T] = []
+        public var fitness: Double = -Double.infinity
         var geneCount: Int {
             return chromosome.count
         }

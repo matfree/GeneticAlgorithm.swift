@@ -6,7 +6,7 @@ A genetic algorithm is a search heuristic that is inspired by Charles Darwin's t
 
 ## Functionality
 
-Create your own initialization and fitness function, using any variables (genes) type and pass them to the GeneticAlgorithm class initialization function.
+GeneticAlgorithm.swift allows you to create your own initialization and fitness function, using any variables (genes) type and pass them to the GeneticAlgorithm class initialization function.
 
 ## Example
 

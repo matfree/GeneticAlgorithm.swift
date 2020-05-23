@@ -8,6 +8,13 @@ A genetic algorithm is a search heuristic that is inspired by Charles Darwin's t
 
 GeneticAlgorithm.swift allows you to create your own initialization and fitness function, using any variables (genes) type and pass them to the GeneticAlgorithm class initialization function.
 
+The algorithm cover the five following phases:
+1. Initial population
+2. Fitness function
+3. Selection
+4. Crossover
+5. Mutation
+
 ## Example
 
 Here is an example showing how to maximize `y` in the function `y=4*w1-2*w2+7*w3+5*w4+11*w5+1*w6` by slecting the paramters `w1...w6`.
@@ -47,7 +54,7 @@ let param = GeneticAlgorithm<Int>.Parameters(fitnessScale: .rough, parentProport
 Instantiating the class:
 
 ```swift
-let ga = GeneticAlgorithm(populationSize: 50, initializeFunction: initializeGrid, fitnessFunction: fitnessGrid, parameters: param)
+let ga = GeneticAlgorithm(populationSize: 50, initializeFunction: initialize, fitnessFunction: fitness, parameters: param)
 ```
 
 Display the initial fitness of the best individual:

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GeneticAlgorithm<T> {
+public class GeneticAlgorithm<T> {
     var populationSize: Int
     var population: [Individual<T>] = []
     private var initializeFunction: () -> [T]

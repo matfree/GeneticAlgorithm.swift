@@ -15,7 +15,7 @@ public class GeneticAlgorithm<T> {
     private var fitnessFunction: ([T]) -> Double
     private var parameters: Parameters
     var generationCount: Int
-    var bestIndividual: Individual<T> {
+    public var bestIndividual: Individual<T> {
         return population[0]
     }
     

@@ -8,8 +8,6 @@
 
 import Foundation
 
-/// GeneticAlgorithm main class
-
 public class GeneticAlgorithm<T> {
     var populationSize: Int
     var population: [Individual<T>] = []
